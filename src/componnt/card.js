@@ -54,22 +54,38 @@ class Card extends Component {
         console.log(e)
         console.log(id)
     }
-    render(){
 
+    state={}
+
+    constructor(props){
+        super(props);
+        console.log('[card.js] run constructor')
+      }
+    
+      static getDerivedStateFromProps(props,state){
+        console.log('[card.js] run getDerivedStateFromProps')
+        return null; 
+      }
+    
+      componentDidMount(){
+        console.log('[card.js] run componentDidMount')
+      }
+    render(){
+        console.log('card render')
         let {title , body}=this.props
 
         return(
             <div className="card">
                 <header className="card-header">
-                    <h2>{title}</h2>
+                    <h4>{title}</h4>
                 </header>
                 <section className="card-body">
                     <p>{body}</p> 
-                    <button onClick={this.eventHandler.bind(this,'xxxx')}>
+                    <button onClick={this.eventHandler.bind(this,'xxxx')} className="btn btn-primary">
                         click
                     </button>
                 </section>
-                <footer>
+                <footer className="card-footer">
                     <p>card Footer</p>
                 </footer>
             </div>
